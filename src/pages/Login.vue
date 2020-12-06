@@ -7,14 +7,14 @@
 </template>
 
 <script>
-import { login } from '@/services/auth.js'
+import { login } from "@/services/auth.js";
 
 export default {
   name: "Login",
   data() {
     return {
       email: "",
-      password: ""      
+      password: ""
     };
   },
   methods: {
@@ -22,9 +22,9 @@ export default {
     //mettere il token in un cookie
     async authentication() {
       if (this.email != "" && this.password != "") {
-        login( this.email, this.password)
-          .then( response => console.log(response.data))
-          .catch( error => console.log(error));              
+        login(this.email, this.password)
+          .then(response => console.log(response.data))
+          .catch(error => console.log(error));
       } else {
         console.log("Riprovaci");
       }

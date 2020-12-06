@@ -6,17 +6,17 @@ export default createStore({
     refreshToken: null
   },
   mutations: {
-    SET_TOKEN( state, token ){
+    SET_TOKEN(state, token) {
       state.token = token;
     },
-    SET_REFRESH_TOKEN( state, refreshToken ){
+    SET_REFRESH_TOKEN(state, refreshToken) {
       state.refreshToken = refreshToken;
     }
   },
   actions: {
-    login ( {commit} ) {
-      commit( 'SET_TOKEN', "FAKEtoken" );
-      commit( 'SET_REFRESH_TOKEN', "lfknvvlk" );
+    login({ commit }) {
+      commit("SET_TOKEN", "FAKEtoken");
+      commit("SET_REFRESH_TOKEN", "lfknvvlk");
     }
   },
   modules: {}

@@ -1,18 +1,18 @@
-import axios from 'axios';
+import axios from "axios";
 
 var login = (email, password) => {
   var body = {
-    email : email,
-    password : password,
-    action : "login"
-  }
-  return axios.post("http://localhost:8081/authentication", body, {  //axios torna una promise
+    email: email,
+    password: password
+  };
+  return axios.post("http://localhost:8081/login", body, {
+    //axios torna una promise
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'},
-    });
-}
+      //Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    withCredentials: true
+  });
+};
 
-
-
-export { login } 
+export { login };
