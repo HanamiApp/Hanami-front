@@ -1,32 +1,49 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 import Login from "../pages/Login.vue";
-import HomePage from "../pages/Home.vue";
+import Home from "../pages/Home.vue";
+import Plant from "../views/Plant.vue";
+import Adopt from "../views/Adopt.vue";
+import Trip from "../views/Trip.vue";
+import Challenges from "../views/Challenges.vue";
+import Tasks from "../views/Tasks.vue";
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    component: Home,
+    children: [
+      {
+        path: "/plant",
+        name: "Plant",
+        component: Plant
+      },
+      {
+        path: "/adopt",
+        name: "Adopt",
+        component: Adopt
+      },
+      {
+        path: "/trip",
+        name: "Trip",
+        component: Trip
+      },
+      {
+        path: "/challenges",
+        name: "Challenges",
+        component: Challenges
+      },
+      {
+        path: "/tasks",
+        name: "Tasks",
+        component: Tasks
+      }
+    ]
   },
   {
     path: "/login",
     name: "Login",
     component: Login
-  },
-  {
-    path: "/home",
-    name: "HomePage",
-    component: HomePage
   }
 ];
 

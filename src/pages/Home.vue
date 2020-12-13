@@ -1,13 +1,122 @@
 <template>
-  <div>
-    <div></div>
-    <router-view></router-view>
-    <div></div>
+  <div id="home">
+    <div class="left">
+      <div class="title">Hanami</div>
+      <BaseButton :active="buttonActive == 1" @click="changeActive(1)">
+        <BaseIcon :active="buttonActive == 1">
+          <HomeIcon />
+        </BaseIcon>
+        <div class="route-name">
+          <router-link to="/">Home</router-link>
+        </div>
+      </BaseButton>
+      <BaseButton :active="buttonActive == 2" @click="changeActive(2)">
+        <BaseIcon :active="buttonActive == 2">
+          <HomeIcon />
+        </BaseIcon>
+        <div class="route-name">
+          <router-link to="/plant">Piante</router-link>
+        </div>
+      </BaseButton>
+      <BaseButton :active="buttonActive == 3" @click="changeActive(3)">
+        <BaseIcon :active="buttonActive == 3">
+          <HomeIcon />
+        </BaseIcon>
+        <div class="route-name">
+          <router-link to="/adopt">Adotta</router-link>
+        </div>
+      </BaseButton>
+      <BaseButton :active="buttonActive == 4" @click="changeActive(4)">
+        <BaseIcon :active="buttonActive == 4">
+          <HomeIcon />
+        </BaseIcon>
+        <div class="route-name">
+          <router-link to="/trip">Viaggio</router-link>
+        </div>
+      </BaseButton>
+      <BaseButton :active="buttonActive == 5" @click="changeActive(5)">
+        <BaseIcon :active="buttonActive == 5">
+          <HomeIcon />
+        </BaseIcon>
+        <div class="route-name">
+          <router-link to="/challenges">Challenges</router-link>
+        </div>
+      </BaseButton>
+      <BaseButton :active="buttonActive == 6" @click="changeActive(6)">
+        <BaseIcon :active="buttonActive == 6">
+          <HomeIcon />
+        </BaseIcon>
+        <div class="route-name">
+          <router-link to="/tasks">Tasks</router-link>
+        </div>
+      </BaseButton>
+    </div>
+    <div class="center">
+      <router-view />
+    </div>
+    <div class="right"></div>
   </div>
 </template>
 
 <script>
-export default {};
+import BaseButton from "@/components/base/BaseButton.vue";
+import BaseIcon from "@/components/base/BaseIcon.vue";
+import HomeIcon from "@/assets/icons/HomeIcon.vue";
+
+export default {
+  components: {
+    BaseButton,
+    BaseIcon,
+    HomeIcon
+  },
+  name: "Home",
+  data() {
+    return {
+      buttonActive: 1
+    };
+  },
+  methods: {
+    changeActive(toActive) {
+      this.buttonActive = toActive;
+    }
+  }
+};
 </script>
 
-<style scoped></style>
+<style lang="sass" scoped>
+#home
+  display: flex
+  height: 100%
+  width: 100%
+.left
+  width: 20%
+  height: 100%
+  display: flex
+  align-items: center
+  flex-direction: column
+  & .title
+    font-size: 33px
+    font-weight: bold
+    margin: 50px
+  & .route-name
+    display: flex
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    margin-right: 10px
+a
+  text-decoration: none
+  color: black
+  margin-left: 5px
+.icon
+  margin-left: 3px
+.center
+  width: 50%
+  border-radius: 25px
+  background-color: #F6F7FB
+  margin: 10px
+.right
+  width: 30%
+  height: 100%
+  background-color: rosybrown
+</style>
