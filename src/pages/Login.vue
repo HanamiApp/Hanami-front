@@ -1,13 +1,13 @@
 <template>
   <div>
-    <input placeholder="Insert Email" v-model="email" />
-    <input placeholder="Insert Password" v-model="password" />
+    <input placeholder="Insert Email" type="email" v-model="email" />
+    <input placeholder="Insert Password" type="password" v-model="password" />
     <button @click="authentication()">Login</button>
   </div>
 </template>
 
 <script>
-import { login } from "@/services/auth.js";
+import { mapActions } from "vuex";
 
 export default {
   name: "Login",
@@ -18,15 +18,15 @@ export default {
     };
   },
   methods: {
-    //vedere come chiamare le actions e come visualizzare gli store.state
-    //mettere il token in un cookie
+    ...mapActions(["login"]),
     async authentication() {
       if (this.email != "" && this.password != "") {
-        login(this.email, this.password)
-          .then(response => console.log(response.data))
-          .catch(error => console.log(error));
+        let data = { email: this.email, password: this.password };
+        this.login({ data })
+          .then(() => this.$router.push("/"))
+          .catch(err => console.log(err));
       } else {
-        console.log("Riprovaci");
+        console.log("Riloggati");
       }
     }
   }

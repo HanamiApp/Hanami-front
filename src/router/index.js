@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Login from "../pages/Login.vue";
-import Home from "../pages/Home.vue";
-import Plant from "../views/Plant.vue";
-import Adopt from "../views/Adopt.vue";
-import Trip from "../views/Trip.vue";
-import Challenges from "../views/Challenges.vue";
-import Tasks from "../views/Tasks.vue";
+import Login from "@/pages/Login.vue";
+import Home from "@/pages/Home.vue";
+import Plant from "@/views/Plant.vue";
+import Adopt from "@/views/Adopt.vue";
+import Trip from "@/views/Trip.vue";
+import Challenges from "@/views/Challenges.vue";
+import Tasks from "@/views/Tasks.vue";
 
 const routes = [
   {

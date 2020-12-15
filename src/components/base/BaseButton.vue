@@ -56,4 +56,6 @@ button
   padding: 0
   background-color: #F4E3EB
   margin: 10px 0 10px 0
+  & :hover
+    cursor: pointer
 </style>

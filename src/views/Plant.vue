@@ -1,51 +1,26 @@
 <template>
   <div class="plant-page">
     <div class="header">
-      <BaseButton
-        width="160"
-        height="73"
-        color="#FFB800"
-        :active="buttonActive == 1"
-        radius="30"
-        @click="changeActive(1)"
-        >adottate</BaseButton
-      >
-      <BaseButton
-        width="160"
-        height="73"
-        color="#FFB800"
-        :active="buttonActive == 2"
-        radius="30"
-        @click="changeActive(2)"
-        >regalate</BaseButton
-      >
+      <TabBar
+        :config="{ numItems: 2, nameItems: ['adottate', 'regalate'] }"
+        :style="{ width: '160', height: '73', color: 'FFB800', radius: '30' }"
+      />
     </div>
     <div class="body">
-      <BasePlantCard />
-      <BasePlantCard />
+      <PlantCards />
     </div>
   </div>
 </template>
 
 <script>
-import BaseButton from "@/components/base/BaseButton.vue";
-import BasePlantCard from "@/components/base/BasePlantCard.vue";
+import TabBar from "@/components/TabBar.vue";
+import PlantCards from "@/components/PlantCards.vue";
 
 export default {
   name: "Plant",
   components: {
-    BaseButton,
-    BasePlantCard
-  },
-  data() {
-    return {
-      buttonActive: 1
-    };
-  },
-  methods: {
-    changeActive(toActive) {
-      this.buttonActive = toActive;
-    }
+    TabBar,
+    PlantCards
   }
 };
 </script>
@@ -55,8 +30,5 @@ export default {
   padding: 20px
   & .header
     display: flex
-    & *
-      margin-left: 10px
-      font-weight: normal
   & .body
 </style>

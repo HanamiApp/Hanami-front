@@ -2,54 +2,54 @@
   <div id="home">
     <div class="left">
       <div class="title">Hanami</div>
-      <BaseButton :active="buttonActive == 1" @click="changeActive(1)">
-        <BaseIcon :active="buttonActive == 1">
-          <HomeIcon />
-        </BaseIcon>
-        <div class="route-name">
-          <router-link to="/">Home</router-link>
-        </div>
-      </BaseButton>
-      <BaseButton :active="buttonActive == 2" @click="changeActive(2)">
-        <BaseIcon :active="buttonActive == 2">
-          <HomeIcon />
-        </BaseIcon>
-        <div class="route-name">
-          <router-link to="/plant">Piante</router-link>
-        </div>
-      </BaseButton>
-      <BaseButton :active="buttonActive == 3" @click="changeActive(3)">
-        <BaseIcon :active="buttonActive == 3">
-          <HomeIcon />
-        </BaseIcon>
-        <div class="route-name">
-          <router-link to="/adopt">Adotta</router-link>
-        </div>
-      </BaseButton>
-      <BaseButton :active="buttonActive == 4" @click="changeActive(4)">
-        <BaseIcon :active="buttonActive == 4">
-          <HomeIcon />
-        </BaseIcon>
-        <div class="route-name">
-          <router-link to="/trip">Viaggio</router-link>
-        </div>
-      </BaseButton>
-      <BaseButton :active="buttonActive == 5" @click="changeActive(5)">
-        <BaseIcon :active="buttonActive == 5">
-          <HomeIcon />
-        </BaseIcon>
-        <div class="route-name">
-          <router-link to="/challenges">Challenges</router-link>
-        </div>
-      </BaseButton>
-      <BaseButton :active="buttonActive == 6" @click="changeActive(6)">
-        <BaseIcon :active="buttonActive == 6">
-          <HomeIcon />
-        </BaseIcon>
-        <div class="route-name">
-          <router-link to="/tasks">Tasks</router-link>
-        </div>
-      </BaseButton>
+      <router-link to="/">
+        <BaseButton :active="buttonActive == 1" @click="changeActive(1)">
+          <BaseIcon :active="buttonActive == 1">
+            <HomeIcon />
+          </BaseIcon>
+          <p class="route-name">Home</p>
+        </BaseButton>
+      </router-link>
+      <router-link to="/plant">
+        <BaseButton :active="buttonActive == 2" @click="changeActive(2)">
+          <BaseIcon :active="buttonActive == 2">
+            <HomeIcon />
+          </BaseIcon>
+          <p class="route-name">Piante</p>
+        </BaseButton>
+      </router-link>
+      <router-link to="/adopt">
+        <BaseButton :active="buttonActive == 3" @click="changeActive(3)">
+          <BaseIcon :active="buttonActive == 3">
+            <HomeIcon />
+          </BaseIcon>
+          <p class="route-name">Adotta</p>
+        </BaseButton>
+      </router-link>
+      <router-link to="/trip">
+        <BaseButton :active="buttonActive == 4" @click="changeActive(4)">
+          <BaseIcon :active="buttonActive == 4">
+            <HomeIcon />
+          </BaseIcon>
+          <p class="route-name">Viaggio</p>
+        </BaseButton>
+      </router-link>
+      <router-link to="/challenges">
+        <BaseButton :active="buttonActive == 5" @click="changeActive(5)">
+          <BaseIcon :active="buttonActive == 5">
+            <HomeIcon />
+          </BaseIcon>
+          <p class="route-name">Challenges</p>
+        </BaseButton>
+      </router-link>
+      <router-link to="/tasks">
+        <BaseButton :active="buttonActive == 6" @click="changeActive(6)">
+          <BaseIcon :active="buttonActive == 6">
+            <HomeIcon />
+          </BaseIcon>
+          <p class="route-name">Tasks</p>
+        </BaseButton>
+      </router-link>
     </div>
     <div class="center">
       <router-view />

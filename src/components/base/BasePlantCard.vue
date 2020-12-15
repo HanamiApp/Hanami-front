@@ -1,12 +1,23 @@
 <template>
   <div class="container">
-    <div class="img">img</div>
+    <BaseIcon
+      width="178"
+      height="178"
+      color="#EDF0F9"
+      :active="true"
+      radius="25"
+    />
     <div class="info"></div>
   </div>
 </template>
 
 <script>
-export default {};
+import BaseIcon from "@/components/base/BaseIcon.vue";
+
+export default {
+  name: "BasePlantCard",
+  components: { BaseIcon }
+};
 </script>
 
 <style lang="sass" scoped>
@@ -14,17 +25,9 @@ export default {};
   display: flex
   align-items: center
   height: 224px
-  width: 668px
+  width: 600px
   border-radius: 30px
   background-color: #FFFFFF
-  & .img
-    display: flex
-    align-items: center
-    justify-content: center
-    height: 178px
-    width: 178px
-    border-radius: 25px
-    background-color: #EDF0F9
+  margin: 10px 0 10px 0
   & .info
-
 </style>
