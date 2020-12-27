@@ -10,7 +10,7 @@ export default {
   props: {
     width: {
       type: String,
-      default: "162"
+      default: "165"
     },
     height: {
       type: String,
@@ -50,12 +50,9 @@ button
   font-weight: bold
   font-size: 17px
   border: none
-  height: 55px
-  width: 162px
-  border-radius: 15px
   padding: 0
-  background-color: #F4E3EB
-  margin: 10px 0 10px 0
+  margin: 10px
+  transition: all 200ms linear
   & :hover
     cursor: pointer
 </style>

@@ -1,14 +1,13 @@
 <template>
   <div
     class="container"
+    :style="containerStyle"
     :key="index"
     v-for="(item, index) in this.generateTabBar"
   >
     <BaseButton
-      width="this.style.width"
-      height="this.style.height"
       :active="buttonActive == index"
-      radius="this.style.radius"
+      :color="this.style.color"
       @click="changeActive(index)"
       >{{ item.name[index] }}</BaseButton
     >
@@ -49,16 +48,26 @@ export default {
         state.push(item);
       }
       return state;
+    },
+    containerStyle() {
+      return {
+        height: this.style.height + "%",
+        width: this.style.width + "%",
+        "border-radius": this.style.radius + "px"
+      };
     }
   },
   methods: {
     changeActive(toActive) {
-      console.log("ACTIVE: " + toActive);
       this.buttonActive = toActive;
-      console.log("Button: " + this.buttonActive);
     }
   }
 };
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.container
+  display: flex
+  align-items: center
+  justify-content: center
+</style>

@@ -3,7 +3,7 @@
     <div class="header">
       <TabBar
         :config="{ numItems: 2, nameItems: ['adottate', 'regalate'] }"
-        :style="{ width: '160', height: '73', color: 'FFB800', radius: '30' }"
+        :style="{ width: '30', height: '30', color: '#FFB800', radius: '30' }"
       />
     </div>
     <div class="body">
@@ -27,8 +27,16 @@ export default {
 
 <style lang="sass" scoped>
 .plant-page
+  display: flex
+  align-items: center
+  width: 100%
+  height: 100%
   padding: 20px
   & .header
     display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    height: 20%
   & .body
 </style>

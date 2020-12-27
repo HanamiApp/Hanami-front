@@ -9,32 +9,32 @@ import Tasks from "@/views/Tasks.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home,
     children: [
       {
-        path: "/plant",
+        path: "/home/plant",
         name: "Plant",
         component: Plant
       },
       {
-        path: "/adopt",
+        path: "/home/adopt",
         name: "Adopt",
         component: Adopt
       },
       {
-        path: "/trip",
+        path: "/home/trip",
         name: "Trip",
         component: Trip
       },
       {
-        path: "/challenges",
+        path: "/home/challenges",
         name: "Challenges",
         component: Challenges
       },
       {
-        path: "/tasks",
+        path: "/home/tasks",
         name: "Tasks",
         component: Tasks
       }
@@ -51,5 +51,7 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 });
+
+//router.replace({ path: "/home/*", redirect: "/home" });
 
 export default router;

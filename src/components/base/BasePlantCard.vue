@@ -7,7 +7,7 @@
       :active="true"
       radius="25"
     />
-    <div class="info"></div>
+    <div class="info"><slot /></div>
   </div>
 </template>
 

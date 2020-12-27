@@ -22,8 +22,9 @@ export default {
     async authentication() {
       if (this.email != "" && this.password != "") {
         let data = { email: this.email, password: this.password };
-        this.login({ data })
-          .then(() => this.$router.push("/"))
+        this.login({ data }) //da vedere data perchè passata così
+          //await this.login({data}) <= se non funziona il reject e cazzi e mazzi
+          .then(() => this.$router.push("/home"))
           .catch(err => console.log(err));
       } else {
         console.log("Riloggati");
