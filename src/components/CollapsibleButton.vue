@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import BaseButton from "@/components/base/BaseButton.vue";
-import BaseInput from "@/components/base/BaseInput.vue";
+import BaseButton from '@/components/base/BaseButton.vue'
+import BaseInput from '@/components/base/BaseInput.vue'
 
 export default {
-  name: "CollapsibleButton",
+  name: 'CollapsibleButton',
   components: { BaseButton, BaseInput },
   props: {
     placeholder: null
@@ -33,24 +33,24 @@ export default {
   data() {
     return {
       isCollapse: false
-    };
+    }
   },
   methods: {
     collapse() {
       if (!this.isCollapse) {
-        this.$refs.button.style.width = "700px";
-        this.isCollapse = !this.isCollapse;
+        this.$refs.button.style.width = '700px'
+        this.isCollapse = !this.isCollapse
       } else {
-        this.$refs.button.style.width = "85px";
-        this.isCollapse = !this.isCollapse;
+        this.$refs.button.style.width = '85px'
+        this.isCollapse = !this.isCollapse
       }
-      this.$emit("has-gift", this.isCollapse);
+      this.$emit('has-gift', this.isCollapse)
     },
     setUserEmail(event) {
-      this.$emit("gift-receiver", event.target.value);
+      this.$emit('gift-receiver', event.target.value)
     }
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>

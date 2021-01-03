@@ -54,8 +54,8 @@ export default {
   border-radius: 20px
   text-align: center
   margin: 0 7px 0 7px
-  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 15%, 85% 0);
-  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 15%, 85% 0);
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 15%, 85% 0)
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 15%, 85% 0)
   -webkit-transition: all 0.5s cubic-bezier(.39,.58,.57,1)
   -moz-transition: all 0.5s cubic-bezier(.39,.58,.57,1)
   -o-transition: all 0.5s cubic-bezier(.39,.58,.57,1)

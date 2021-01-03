@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import BasePlantCard from "@/components/base/BasePlantCard.vue";
+import BasePlantCard from '@/components/base/BasePlantCard.vue'
 
 export default {
-  name: "PlantCards",
+  name: 'PlantCards',
   components: { BasePlantCard }
-};
+}
 </script>
 
 <style lang="sass" scoped>

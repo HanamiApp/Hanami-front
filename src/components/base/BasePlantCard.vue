@@ -1,23 +1,17 @@
 <template>
   <div class="container">
-    <BaseIcon
-      width="178"
-      height="178"
-      color="#EDF0F9"
-      :active="true"
-      radius="25"
-    />
+    <BaseIcon width="178" height="178" color="#EDF0F9" :active="true" radius="25" />
     <div class="info"><slot /></div>
   </div>
 </template>
 
 <script>
-import BaseIcon from "@/components/base/BaseIcon.vue";
+import BaseIcon from '@/components/base/BaseIcon.vue'
 
 export default {
-  name: "BasePlantCard",
+  name: 'BasePlantCard',
   components: { BaseIcon }
-};
+}
 </script>
 
 <style lang="sass" scoped>

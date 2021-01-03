@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import AppleIconFalse from "@/assets/icons/AppleIconFalse.vue";
-import AppleIconTrue from "@/assets/icons/AppleIconTrue.vue";
-import AppleIconFalseActive from "@/assets/icons/AppleIconFalseActive.vue";
+import AppleIconFalse from '@/assets/icons/AppleIconFalse.vue'
+import AppleIconTrue from '@/assets/icons/AppleIconTrue.vue'
+import AppleIconFalseActive from '@/assets/icons/AppleIconFalseActive.vue'
 
 export default {
-  name: "BaseTreeSwitch",
+  name: 'BaseTreeSwitch',
   components: {
     AppleIconFalse,
     AppleIconTrue,
@@ -29,25 +29,25 @@ export default {
   data() {
     return {
       active: 2
-    };
+    }
   },
   methods: {
     changeActive(active) {
-      this.active = active;
-      this.$emit("fruit", active);
+      this.active = active
+      this.$emit('fruit', active)
     },
     style() {
       switch (this.active) {
         case 1:
-          return "apple";
+          return 'apple'
         case 2:
-          return "all";
+          return 'all'
         case 3:
-          return "noApple";
+          return 'noApple'
       }
     }
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>
@@ -76,9 +76,9 @@ export default {
     align-items: center
     justify-content: center
     cursor: pointer
-    box-shadow: 0px 0px 7px 0px rgba(236, 236, 236, 1);
-    cursor: pointer;
-    z-index: 1;
+    box-shadow: 0px 0px 7px 0px rgba(236, 236, 236, 1)
+    cursor: pointer
+    z-index: 1
   & .slide
     position: absolute
     background-color: #FFFFFF

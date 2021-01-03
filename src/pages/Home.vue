@@ -100,9 +100,9 @@ export default {
     margin: 50px
   & .route-name
     display: flex
-    justify-content: center;
-    align-items: center;
-    width: 100px;
+    justify-content: center
+    align-items: center
+    width: 100px
     margin-right: 10px
 a
   display: flex

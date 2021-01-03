@@ -6,19 +6,19 @@
 
 <script>
 export default {
-  name: "BaseButton",
+  name: 'BaseButton',
   props: {
     width: {
       type: String,
-      default: "165"
+      default: '165'
     },
     height: {
       type: String,
-      default: "55"
+      default: '55'
     },
     color: {
       type: String,
-      default: "#F4E3EB"
+      default: '#F4E3EB'
     },
     active: {
       type: Boolean,
@@ -26,20 +26,20 @@ export default {
     },
     radius: {
       type: String,
-      default: "15"
+      default: '15'
     }
   },
   computed: {
     style() {
       return {
-        height: this.height + "px",
-        width: this.width + "px",
-        "border-radius": this.radius + "px",
-        "background-color": this.active ? this.color : "#FFFFFF"
-      };
+        height: this.height + 'px',
+        width: this.width + 'px',
+        'border-radius': this.radius + 'px',
+        'background-color': this.active ? this.color : '#FFFFFF'
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>

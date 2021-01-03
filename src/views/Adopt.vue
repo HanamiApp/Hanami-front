@@ -21,10 +21,7 @@
       <BaseTreeSwitch @fruit="setFruit" />
     </div>
     <div class="row3">
-      <SpeciesSelector
-        :species="getSpecies"
-        @selected-species="setChoosedPlant"
-      />
+      <SpeciesSelector :species="getSpecies" @selected-species="setChoosedPlant" />
     </div>
     <div class="row4">
       <Map :propPlaces="getPlaces" @selected-place="selectedPlace" />
@@ -45,17 +42,17 @@
 </template>
 
 <script>
-import BaseInput from "@/components/base/BaseInput.vue";
-import SpeciesSelector from "@/components/SpeciesSelector.vue";
-import BaseButton from "@/components/base/BaseButton.vue";
-import CollapsibleButton from "@/components/CollapsibleButton.vue";
-import Map from "@/components/Map.vue";
-import BaseTreeSwitch from "@/components/base/BaseTreeSwitch.vue";
-import { mapState } from "vuex";
-import { mapActions } from "vuex";
+import BaseInput from '@/components/base/BaseInput.vue'
+import SpeciesSelector from '@/components/SpeciesSelector.vue'
+import BaseButton from '@/components/base/BaseButton.vue'
+import CollapsibleButton from '@/components/CollapsibleButton.vue'
+import Map from '@/components/Map.vue'
+import BaseTreeSwitch from '@/components/base/BaseTreeSwitch.vue'
+import { mapState } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
-  name: "Adopt",
+  name: 'Adopt',
   components: {
     BaseInput,
     SpeciesSelector,
@@ -66,72 +63,67 @@ export default {
   },
   data() {
     return {
-      plantName: "",
-      speciesName: "",
+      plantName: '',
+      speciesName: '',
       fruit: null,
-      choosedPlant: "",
-      choosedPlace: "",
-      isGift: "",
+      choosedPlant: '',
+      choosedPlace: '',
+      isGift: '',
       userGiftEmail: null
-    };
+    }
   },
   mounted() {
-    this.loadSpecies();
-    this.loadPlaces();
+    this.loadSpecies()
+    this.loadPlaces()
   },
   computed: {
     getSpecies() {
-      return this.species();
+      return this.species()
     },
     getPlaces() {
-      return this.places();
+      return this.places()
     }
   },
   methods: {
-    ...mapActions([
-      "loadSpecies",
-      "loadPlaces",
-      "searchSpecies",
-      "createPlant"
-    ]),
-    ...mapState(["species", "places"]),
+    ...mapActions(['loadSpecies', 'loadPlaces', 'searchSpecies', 'createPlant']),
+    ...mapState(['species', 'places']),
     setPlantName(event) {
-      this.plantName = event.target.value;
+      this.plantName = event.target.value
     },
     setSpeciesName(event) {
-      this.speciesName = event.target.value;
-      var data = { name: this.speciesName, fruit: this.fruit };
-      this.searchSpecies(data).then(() => this.species);
+      this.speciesName = event.target.value
+      var data = { name: this.speciesName, fruit: this.fruit }
+      this.searchSpecies(data).then(() => this.species)
     },
     setFruit(event) {
-      this.fruit = event;
-      var data = { name: this.speciesName, fruit: this.fruit };
-      this.searchSpecies(data).then(() => this.species);
+      this.fruit = event
+      var data = { name: this.speciesName, fruit: this.fruit }
+      this.searchSpecies(data).then(() => this.species)
     },
     setChoosedPlant(event) {
-      this.choosedPlant = event;
+      this.choosedPlant = event
     },
     hasGift(event) {
-      this.isGift = event;
+      this.isGift = event
     },
     setUserEmail(event) {
-      this.userGiftEmail = event;
+      this.userGiftEmail = event
     },
     selectedPlace(event) {
-      this.choosedPlace = event;
+      this.choosedPlace = event
     },
     saveTree() {
       // TODO:SE è UN REGALO, DOVE LO SALVO L'EMAIL DI QUELLO CHE LO DEVE RICEVERE?
       var data = {
         name: this.speciesName,
         isGift: this.isGift,
-        place: "",
+        place: '',
         species: this.choosedPlant
-      };
-      this.createPlant(data).then(() => this.$router.push("/home"));
+      }
+      this.createPlant(data).then(() => this.$router.push('/home'))
     }
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 var create = data => {
   var body = {
@@ -6,13 +6,13 @@ var create = data => {
     has_gift: data.isGift,
     id_place: data.place,
     id_species: data.species
-  };
-  return axios.post("http://localhost:8080/plants", body, {
+  }
+  return axios.post('http://localhost:8080/plants', body, {
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     },
     withCredentials: true
-  });
-};
+  })
+}
 
-export { create };
+export { create }

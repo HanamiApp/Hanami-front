@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import BaseButton from "@/components/base/BaseButton.vue";
+import BaseButton from '@/components/base/BaseButton.vue'
 
 export default {
-  name: "TabBar",
+  name: 'TabBar',
   components: { BaseButton },
   props: {
     config: {
@@ -38,31 +38,31 @@ export default {
   data() {
     return {
       buttonActive: 0
-    };
+    }
   },
   computed: {
     generateTabBar() {
-      var state = [];
+      var state = []
       for (var i = 0; i < this.config.numItems; i++) {
-        var item = { name: this.config.nameItems };
-        state.push(item);
+        var item = { name: this.config.nameItems }
+        state.push(item)
       }
-      return state;
+      return state
     },
     containerStyle() {
       return {
-        height: this.style.height + "%",
-        width: this.style.width + "%",
-        "border-radius": this.style.radius + "px"
-      };
+        height: this.style.height + '%',
+        width: this.style.width + '%',
+        'border-radius': this.style.radius + 'px'
+      }
     }
   },
   methods: {
     changeActive(toActive) {
-      this.buttonActive = toActive;
+      this.buttonActive = toActive
     }
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>

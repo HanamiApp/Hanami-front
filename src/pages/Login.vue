@@ -7,31 +7,31 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 
 export default {
-  name: "Login",
+  name: 'Login',
   data() {
     return {
-      email: "",
-      password: ""
-    };
+      email: '',
+      password: ''
+    }
   },
   methods: {
-    ...mapActions(["login"]),
+    ...mapActions(['login']),
     async authentication() {
-      if (this.email != "" && this.password != "") {
-        let data = { email: this.email, password: this.password };
+      if (this.email != '' && this.password != '') {
+        let data = { email: this.email, password: this.password }
         this.login({ data }) //da vedere data perchè passata così
           //await this.login({data}) <= se non funziona il reject e cazzi e mazzi
-          .then(() => this.$router.push("/home"))
-          .catch(err => console.log(err));
+          .then(() => this.$router.push('/home'))
+          .catch(err => console.log(err))
       } else {
-        console.log("Riloggati");
+        console.log('Riloggati')
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>

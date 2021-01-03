@@ -12,24 +12,19 @@
       :back="item.description"
       @click="selectedSpecies(item.id)"
     />
-    <button
-      id="slide"
-      class="right-arrow"
-      @click="scroll('forward')"
-      v-show="buttonShowRight"
-    >
+    <button id="slide" class="right-arrow" @click="scroll('forward')" v-show="buttonShowRight">
       <ArrowIconLeft />
     </button>
   </div>
 </template>
 
 <script>
-import BaseFlipCard from "@/components/base/BaseFlipCard.vue";
-import ArrowIconRight from "@/assets/icons/ArrowIconRight.vue";
-import ArrowIconLeft from "@/assets/icons/ArrowIconLeft.vue";
+import BaseFlipCard from '@/components/base/BaseFlipCard.vue'
+import ArrowIconRight from '@/assets/icons/ArrowIconRight.vue'
+import ArrowIconLeft from '@/assets/icons/ArrowIconLeft.vue'
 
 export default {
-  name: "SpeciesSelector",
+  name: 'SpeciesSelector',
   components: {
     ArrowIconRight,
     ArrowIconLeft,
@@ -42,30 +37,30 @@ export default {
     return {
       buttonShowLeft: true,
       buttonShowRight: true
-    };
+    }
   },
   methods: {
     scroll(direction) {
-      var element = document.getElementById("scrolling-list");
-      var scroll = 0;
+      var element = document.getElementById('scrolling-list')
+      var scroll = 0
       var slideTimer = setInterval(function() {
-        if (direction == "back") {
-          element.scrollLeft -= 25;
+        if (direction == 'back') {
+          element.scrollLeft -= 25
         } else {
-          element.scrollLeft += 25;
+          element.scrollLeft += 25
         }
-        scroll += 10;
+        scroll += 10
         if (scroll >= 100) {
-          window.clearInterval(slideTimer);
+          window.clearInterval(slideTimer)
         }
-      }, 25);
+      }, 25)
     },
     buttonShow() {},
     selectedSpecies(speciesId) {
-      this.$emit("selected-species", speciesId);
+      this.$emit('selected-species', speciesId)
     }
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>

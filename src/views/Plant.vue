@@ -13,16 +13,16 @@
 </template>
 
 <script>
-import TabBar from "@/components/TabBar.vue";
-import PlantCards from "@/components/PlantCards.vue";
+import TabBar from '@/components/TabBar.vue'
+import PlantCards from '@/components/PlantCards.vue'
 
 export default {
-  name: "Plant",
+  name: 'Plant',
   components: {
     TabBar,
     PlantCards
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>

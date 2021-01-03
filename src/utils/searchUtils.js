@@ -1,11 +1,11 @@
 var filterNotNull = filters => {
-  var filtered = [];
+  var filtered = []
   filters.forEach(filter => {
     if (Object.values(filter)[0] !== null) {
-      filtered.push(filter);
+      filtered.push(filter)
     }
-  });
-  return filtered;
-};
+  })
+  return filtered
+}
 
-export { filterNotNull };
+export { filterNotNull }

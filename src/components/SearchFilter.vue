@@ -1,11 +1,6 @@
 <template>
   <div class="search">
-    <BaseInput
-      height="100"
-      placeholder="search"
-      fontSize="19"
-      @input="setEventName"
-    />
+    <BaseInput height="100" placeholder="search" fontSize="19" @input="setEventName" />
     <div class="result-box" v-if="show">
       <div
         class="single-result"
@@ -13,17 +8,17 @@
         v-for="(item, index) in list"
         @click="selectZone(item.latitude, item.longitude)"
       >
-        <p>{{ item.name + ", " + item.city }}</p>
+        <p>{{ item.name + ', ' + item.city }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BaseInput from "@/components/base/BaseInput.vue";
+import BaseInput from '@/components/base/BaseInput.vue'
 
 export default {
-  name: "SearchFilter",
+  name: 'SearchFilter',
   components: { BaseInput },
   props: {
     list: null
@@ -31,21 +26,21 @@ export default {
   data() {
     return {
       show: false
-    };
+    }
   },
   methods: {
     setEventName(event) {
-      this.$emit("search-input", event.target.value);
-      this.show = !this.show;
+      this.$emit('search-input', event.target.value)
+      this.show = !this.show
     },
     selectZone(latitude, longitude) {
-      var coordinate = { latitude: latitude, longitude: longitude };
-      console.log(coordinate);
-      this.$emit("selected-zone", coordinate);
-      this.show = !this.show;
+      var coordinate = { latitude: latitude, longitude: longitude }
+      console.log(coordinate)
+      this.$emit('selected-zone', coordinate)
+      this.show = !this.show
     }
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>

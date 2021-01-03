@@ -6,54 +6,54 @@
 
 <script>
 export default {
-  name: "BaseInput",
+  name: 'BaseInput',
   props: {
     width: {
       type: String,
-      default: "100"
+      default: '100'
     },
     height: String,
     placeholder: String,
     textColor: {
       type: String,
-      default: "A1A1A1"
+      default: 'A1A1A1'
     },
     radius: {
       type: String,
-      default: "20"
+      default: '20'
     },
     backgroundColor: {
       type: String,
-      default: "#F6F6F6"
+      default: '#F6F6F6'
     },
     fontSize: {
       type: String,
-      default: "26"
+      default: '26'
     },
     fontWeight: {
       type: String,
-      default: "normal"
+      default: 'normal'
     }
   },
   data() {
     return {
       // Style data
       styleContainer: {
-        width: this.width + "%",
-        height: this.height + "%",
-        "border-radius": this.radius + "px"
+        width: this.width + '%',
+        height: this.height + '%',
+        'border-radius': this.radius + 'px'
       },
       styleInput: {
         color: this.textColor,
-        "border-radius": this.radius + "px",
-        "background-color": this.backgroundColor,
-        border: "2px solid " + this.backgroundColor,
-        "font-size": this.fontSize + "px",
-        "font-weight": this.fontWeight
+        'border-radius': this.radius + 'px',
+        'background-color': this.backgroundColor,
+        border: '2px solid ' + this.backgroundColor,
+        'font-size': this.fontSize + 'px',
+        'font-weight': this.fontWeight
       }
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>

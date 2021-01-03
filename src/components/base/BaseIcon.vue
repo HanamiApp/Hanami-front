@@ -6,19 +6,19 @@
 
 <script>
 export default {
-  name: "BaseIcon",
+  name: 'BaseIcon',
   props: {
     width: {
       type: String,
-      default: "49"
+      default: '49'
     },
     height: {
       type: String,
-      default: "49"
+      default: '49'
     },
     color: {
       type: String,
-      default: "#FAF1F6"
+      default: '#FAF1F6'
     },
     active: {
       type: Boolean,
@@ -26,20 +26,20 @@ export default {
     },
     radius: {
       type: String,
-      default: "13"
+      default: '13'
     }
   },
   computed: {
     style() {
       return {
-        height: this.height + "px",
-        width: this.width + "px",
-        "border-radius": this.radius + "px",
-        "background-color": this.active ? this.color : "#FFFFFF"
-      };
+        height: this.height + 'px',
+        width: this.width + 'px',
+        'border-radius': this.radius + 'px',
+        'background-color': this.active ? this.color : '#FFFFFF'
+      }
     }
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>

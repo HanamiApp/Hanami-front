@@ -1,8 +1,8 @@
-import { createStore } from "vuex";
-import { login } from "@/services/auth.js";
-import * as SpeciesAPI from "@/services/species.js";
-import * as PlantAPI from "@/services/plant.js";
-import * as PlacesAPI from "@/services/place.js";
+import { createStore } from 'vuex'
+import { login } from '@/services/auth.js'
+import * as SpeciesAPI from '@/services/species.js'
+import * as PlantAPI from '@/services/plant.js'
+import * as PlacesAPI from '@/services/place.js'
 
 export default createStore({
   state: {
@@ -13,35 +13,32 @@ export default createStore({
   getters: {
     getPlaceByName(state) {
       return placeName => {
-        console.log(placeName);
-        var result = [];
+        console.log(placeName)
+        var result = []
         state.places.forEach(place => {
           if (place.name.includes(placeName)) {
-            result.push(place);
+            result.push(place)
           }
-        });
-      };
+        })
+      }
     },
     getPlace(state, coordinate) {
       state.places.forEach(place => {
-        if (
-          place.latitude == coordinate.latitude &&
-          place.longitude == coordinate.longitude
-        )
-          return place;
-      });
-      return null;
+        if (place.latitude == coordinate.latitude && place.longitude == coordinate.longitude)
+          return place
+      })
+      return null
     }
   },
   mutations: {
     SET_USER_ID(state, userId) {
-      state.userId = userId;
+      state.userId = userId
     },
     SET_SPECIES(state, species) {
-      state.species = species;
+      state.species = species
     },
     SET_PLACES(state, places) {
-      state.places = places;
+      state.places = places
     }
   },
   actions: {
@@ -50,43 +47,43 @@ export default createStore({
     login({ commit }, { data }) {
       login(data.email, data.password)
         .then(response => {
-          commit("SET_USER_ID", response.data.data.id);
+          commit('SET_USER_ID', response.data.data.id)
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
     },
     // SPECIES
     loadSpecies({ commit }) {
       SpeciesAPI.getAll()
         .then(response => {
-          commit("SET_SPECIES", response.data.data);
+          commit('SET_SPECIES', response.data.data)
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
     },
     searchSpecies({ commit }, data) {
       SpeciesAPI.search(data.name, data.fruit)
         .then(response => {
-          commit("SET_SPECIES", response.data.data);
+          commit('SET_SPECIES', response.data.data)
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
     },
     // PLANT
     createPlant(data) {
-      PlantAPI.create(data);
+      PlantAPI.create(data)
     },
     // PLACE
     loadPlaces({ commit }) {
       PlacesAPI.getPlaces()
         .then(response => {
-          commit("SET_PLACES", response.data.data);
+          commit('SET_PLACES', response.data.data)
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
     },
     searchPlaces({ commit }, data) {
       PlacesAPI.search(data)
         .then(response => {
-          commit("SET_PLACES", response.data.data);
+          commit('SET_PLACES', response.data.data)
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
     }
   }
-});
+})
