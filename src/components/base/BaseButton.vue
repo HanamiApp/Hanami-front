@@ -1,5 +1,5 @@
 <template>
-  <button :style="style">
+  <button class="button" :class="`--${color}`" :style="style">
     <slot></slot>
   </button>
 </template>
@@ -8,51 +8,54 @@
 export default {
   name: 'BaseButton',
   props: {
-    width: {
-      type: String,
-      default: '165'
-    },
-    height: {
-      type: String,
-      default: '55'
-    },
-    color: {
-      type: String,
-      default: '#F4E3EB'
-    },
+    // data
     active: {
       type: Boolean,
       default: false
     },
-    radius: {
+    // style
+    width: {
+      type: [String, Number],
+      default: 165
+    },
+    height: {
+      type: [String, Number],
+      default: 55
+    },
+    color: {
       type: String,
-      default: '15'
+      default: 'primary'
     }
   },
   computed: {
     style() {
       return {
         height: this.height + 'px',
-        width: this.width + 'px',
-        'border-radius': this.radius + 'px',
-        'background-color': this.active ? this.color : '#FFFFFF'
+        width: this.width + 'px'
       }
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-button
-  display: flex
-  align-items: center
-  justify-content: center
-  font-weight: bold
-  font-size: 17px
-  border: none
-  padding: 0
-  margin: 10px
-  transition: all 200ms linear
-  & :hover
-    cursor: pointer
+<style lang="scss" scoped>
+@import '@/assets/scss/variables.scss';
+
+.button {
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $input-text-size;
+  border: none;
+  transition: all 200ms linear;
+  cursor: pointer;
+  &.--primary {
+    color: $white;
+    background: linear-gradient(145deg, $blue-light, $blue-dark);
+  }
+  &:focus-within {
+    outline: none;
+  }
+}
 </style>

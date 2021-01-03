@@ -1,70 +1,78 @@
 <template>
-  <div class="input-container" :style="styleContainer">
-    <input :placeholder="placeholder" :style="styleInput" />
+  <div class="container" :style="styleContainer">
+    <input class="__input" :class="`--${color}`" :type="type" :placeholder="placeholder" />
   </div>
 </template>
 
 <script>
+// TODO: aggiungere icona 'corretto' o 'errato' all'input
 export default {
   name: 'BaseInput',
   props: {
-    width: {
+    // data
+    placeholder: String,
+    type: {
       type: String,
+      default: 'text'
+    },
+    // style
+    width: {
+      type: [String, Number],
       default: '100'
     },
-    height: String,
-    placeholder: String,
-    textColor: {
+    height: [String, Number],
+    color: {
       type: String,
-      default: 'A1A1A1'
-    },
-    radius: {
-      type: String,
-      default: '20'
-    },
-    backgroundColor: {
-      type: String,
-      default: '#F6F6F6'
-    },
-    fontSize: {
-      type: String,
-      default: '26'
-    },
-    fontWeight: {
-      type: String,
-      default: 'normal'
+      default: 'primary'
     }
   },
   data() {
     return {
       // Style data
       styleContainer: {
-        width: this.width + '%',
-        height: this.height + '%',
-        'border-radius': this.radius + 'px'
-      },
-      styleInput: {
-        color: this.textColor,
-        'border-radius': this.radius + 'px',
-        'background-color': this.backgroundColor,
-        border: '2px solid ' + this.backgroundColor,
-        'font-size': this.fontSize + 'px',
-        'font-weight': this.fontWeight
+        width: this.width + 'px',
+        height: this.height + 'px'
       }
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.input-container
-  position: relative
-input
-   width: 100%
-   height: 100%
-   padding: 0 6% 0 6%
-   box-sizing: border-box
-   transition: all 200ms linear
-   &:focus-within
-      outline: none
+<style lang="scss" scoped>
+@import '@/assets/scss/variables.scss';
+
+.container {
+  transition: all 200ms linear;
+  position: relative;
+  border: 0.3rem solid $white;
+  border-radius: 1.3rem;
+  .__input {
+    width: 100%;
+    height: 100%;
+    padding: 0 6% 0 6%;
+    box-sizing: border-box;
+    transition: all 200ms linear;
+    font-size: $input-text-size;
+    border-radius: 1.1rem;
+    &.--primary {
+      border: 0.2rem solid $white;
+      background-color: $white;
+      box-shadow: 0 0 30px #00000010;
+      color: $blue-light;
+      &:focus-within {
+        border-color: $blue-light;
+      }
+    }
+    &::placeholder {
+      color: $disabled-grey;
+      font-weight: $placeholder-text-weight;
+    }
+    &:focus-within {
+      outline: none;
+    }
+  }
+  &:focus-within {
+    border-color: $blue-light-50;
+  }
+}
 </style>

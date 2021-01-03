@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { login } from '@/services/auth.js'
+import { signIn } from '@/services/auth.js'
 import * as SpeciesAPI from '@/services/species.js'
 import * as PlantAPI from '@/services/plant.js'
 import * as PlacesAPI from '@/services/place.js'
@@ -8,7 +8,13 @@ export default createStore({
   state: {
     userId: null,
     species: [],
-    places: []
+    places: [],
+    // TODO: separare lo store in moduli
+    toaster: {
+      active: true,
+      type: null,
+      message: null
+    }
   },
   getters: {
     getPlaceByName(state) {
@@ -39,17 +45,28 @@ export default createStore({
     },
     SET_PLACES(state, places) {
       state.places = places
+    },
+    SET_TOASTER_STATE(state, toasterState) {
+      state.toaster = toasterState
     }
   },
   actions: {
+    updateToaster({ commit }, toasterState) {
+      commit('SET_TOASTER_STATE', toasterState)
+    },
     // TODO:AGGIUNGERE SE è ANDATA BENE O è ANDATA MALE E VEDERE SE SI PUO METTERE DENTRO IL PUNTO THEN
     // AUTH
-    login({ commit }, { data }) {
-      login(data.email, data.password)
+    async login({ commit }, data) {
+      let outcome = null
+      await signIn(data.email, data.password)
         .then(response => {
           commit('SET_USER_ID', response.data.data.id)
+          outcome = true
         })
-        .catch(error => console.log(error))
+        .catch(() => {
+          outcome = false
+        })
+      return outcome
     },
     // SPECIES
     loadSpecies({ commit }) {

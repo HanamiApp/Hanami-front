@@ -1,11 +1,15 @@
 <template>
   <div class="app">
+    <base-toaster></base-toaster>
     <router-view />
   </div>
 </template>
 
 <script>
-export default {}
+import BaseToaster from './components/base/BaseToaster.vue'
+export default {
+  components: { BaseToaster }
+}
 </script>
 
 <style>

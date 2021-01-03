@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-var login = (email, password) => {
+var signIn = (email, password) => {
   var body = {
     email: email,
     password: password
@@ -15,4 +15,4 @@ var login = (email, password) => {
   })
 }
 
-export { login }
+export { signIn }
