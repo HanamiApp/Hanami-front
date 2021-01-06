@@ -1,6 +1,16 @@
 <template>
   <div class="search">
+<<<<<<< Updated upstream
     <BaseInput height="100" placeholder="search" fontSize="19" @input="setEventName" />
+=======
+    <BaseInput
+      height="100"
+      placeholder="search"
+      fontSize="19"
+      @input="setEventName"
+      @click="showBox"
+    />
+>>>>>>> Stashed changes
     <div class="result-box" v-if="show">
       <div
         class="single-result"
@@ -30,6 +40,7 @@ export default {
   },
   methods: {
     setEventName(event) {
+<<<<<<< Updated upstream
       this.$emit('search-input', event.target.value)
       this.show = !this.show
     },
@@ -38,6 +49,17 @@ export default {
       console.log(coordinate)
       this.$emit('selected-zone', coordinate)
       this.show = !this.show
+=======
+      this.$emit("search-input", event.target.value);
+    },
+    showBox() {
+      this.show = !this.show;
+    },
+    selectZone(latitude, longitude) {
+      var coordinate = { latitude: latitude, longitude: longitude };
+      this.$emit("selected-zone", coordinate);
+      this.show = !this.show;
+>>>>>>> Stashed changes
     }
   }
 }

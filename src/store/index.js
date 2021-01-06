@@ -17,23 +17,29 @@ export default createStore({
     }
   },
   getters: {
-    getPlaceByName(state) {
+    getPlaceByName: state => {
       return placeName => {
-        console.log(placeName)
         var result = []
+        console.log(state.places)
         state.places.forEach(place => {
-          if (place.name.includes(placeName)) {
+          if (place.name.toLowerCase().includes(placeName.toLowerCase())) {
             result.push(place)
           }
         })
+        return result
       }
     },
-    getPlace(state, coordinate) {
-      state.places.forEach(place => {
-        if (place.latitude == coordinate.latitude && place.longitude == coordinate.longitude)
-          return place
-      })
-      return null
+    getPlace: state => {
+      return coordinate => {
+        var placeSelected = null
+        state.places.forEach(place => {
+          if (place.latitude == coordinate.latitude && place.longitude == coordinate.longitude) {
+            placeSelected = place
+            return
+          }
+        })
+        return placeSelected
+      }
     }
   },
   mutations: {
@@ -54,7 +60,6 @@ export default createStore({
     updateToaster({ commit }, toasterState) {
       commit('SET_TOASTER_STATE', toasterState)
     },
-    // TODO:AGGIUNGERE SE è ANDATA BENE O è ANDATA MALE E VEDERE SE SI PUO METTERE DENTRO IL PUNTO THEN
     // AUTH
     async login({ commit }, data) {
       let outcome = null

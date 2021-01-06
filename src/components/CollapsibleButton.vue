@@ -1,14 +1,7 @@
 <template>
   <div class="collapsible-button" ref="button">
-    <div class="button">
-      <BaseButton
-        width="65"
-        height="65"
-        radius="12"
-        :active="true"
-        color="#FFB800"
-        @click="collapse"
-      ></BaseButton>
+    <div>
+      <BaseButton width="65" height="65" @click="collapse"><GiftIcon /></BaseButton>
     </div>
     <BaseInput
       placeholder="inserisci nome utente"
@@ -23,10 +16,11 @@
 <script>
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseInput from '@/components/base/BaseInput.vue'
+import GiftIcon from '@/assets/icons/GiftIcon.vue'
 
 export default {
   name: 'CollapsibleButton',
-  components: { BaseButton, BaseInput },
+  components: { BaseButton, BaseInput, GiftIcon },
   props: {
     placeholder: null
   },
@@ -53,13 +47,14 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.collapsible-button
-  display: flex
-  align-items: center
-  width: 85px
-  height: 85px
-  background-color: #FFF3D2
-  border-radius: 20px
-  transition: all 300ms linear
+<style lang="scss" scoped>
+.collapsible-button {
+  display: flex;
+  align-items: center;
+  width: 85px;
+  height: 85px;
+  background-color: #ff8a01;
+  border-radius: 20px;
+  transition: all 300ms linear;
+}
 </style>

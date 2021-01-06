@@ -1,24 +1,25 @@
 <template>
   <div class="container">
     <div class="row1">
-      <BaseInput
-        height="60"
-        placeholder="dai un nome al tuo albero"
-        textColor="#A1A1A1"
-        @input="setPlantName"
-      />
+      <p class="text">dai un nome al tuo albero</p>
+      <BaseInput height="60" placeholder="albero01" textColor="#A1A1A1" @input="setPlantName" />
     </div>
     <div class="row2">
-      <BaseInput
-        width="45"
-        height="90"
-        placeholder="cerca per specie"
-        textColor="#636363"
-        radius="10"
-        fontSize="19"
-        @input="setSpeciesName"
-      />
-      <BaseTreeSwitch @fruit="setFruit" />
+      <div class="row2__fruit">
+        <p class="text">albero da frutta</p>
+        <FruitButtons @is-fruit="setFruit" />
+      </div>
+      <div class="row2__search">
+        <p class="text">nome specie</p>
+        <BaseInput
+          height="60"
+          placeholder="cerca"
+          textColor="#636363"
+          radius="20"
+          fontSize="19"
+          @input="setSpeciesName"
+        />
+      </div>
     </div>
     <div class="row3">
       <SpeciesSelector :species="getSpecies" @selected-species="setChoosedPlant" />
@@ -32,10 +33,9 @@
         width="700"
         height="85"
         radius="20"
-        :active="true"
-        color="#C4C4C4"
+        color="linear-gradient(135deg, #2c93ff, #2d6aff)"
         @click="saveTree()"
-        >conferma</BaseButton
+        >Avanti</BaseButton
       >
     </div>
   </div>
@@ -47,7 +47,7 @@ import SpeciesSelector from '@/components/SpeciesSelector.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import CollapsibleButton from '@/components/CollapsibleButton.vue'
 import Map from '@/components/Map.vue'
-import BaseTreeSwitch from '@/components/base/BaseTreeSwitch.vue'
+import FruitButtons from '@/components/FruitButtons.vue'
 import { mapState } from 'vuex'
 import { mapActions } from 'vuex'
 
@@ -59,7 +59,7 @@ export default {
     BaseButton,
     CollapsibleButton,
     Map,
-    BaseTreeSwitch
+    FruitButtons
   },
   data() {
     return {
@@ -110,14 +110,14 @@ export default {
       this.userGiftEmail = event
     },
     selectedPlace(event) {
-      this.choosedPlace = event
+      this.choosedPlace = event.id
     },
     saveTree() {
       // TODO:SE è UN REGALO, DOVE LO SALVO L'EMAIL DI QUELLO CHE LO DEVE RICEVERE?
       var data = {
         name: this.speciesName,
         isGift: this.isGift,
-        place: '',
+        place: this.choosedPlace,
         species: this.choosedPlant
       }
       this.createPlant(data).then(() => this.$router.push('/home'))
@@ -126,35 +126,62 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.container
-  display: flex
-  justify-content: center
-  align-items: center
-  flex-direction: column
-  background-color: #FFFFFF
-  width: 90%
-  height: 90%
-  border-radius: 25px
-  & *
-    display: flex
-    align-items: center
-  & .row1
-    width: 90%
-    height: 15%
-  & .row2
-    width: 90%
-    height: 7%
-    justify-content: space-between
-  & .row3
-    width: 95%
-    height: 30%
-    position: relative
-    left: 2.5%
-  & .row4
-    width: 90%
-    height: 35%
-  & .row5
-    width: 90%
-    height: 15%
+<style lang="scss" scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 90%;
+  height: 90%;
+  border-radius: 25px;
+  * {
+    display: flex;
+    align-items: center;
+  }
+  .row1 {
+    width: 90%;
+    height: 15%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .row2 {
+    width: 90%;
+    margin: 15px 0;
+    .row2__fruit {
+      flex-direction: column;
+      width: 30%;
+      height: 100%;
+      align-items: flex-start;
+    }
+    .row2__search {
+      flex-direction: column;
+      width: 70%;
+      height: 100%;
+      align-items: flex-start;
+    }
+  }
+  .row3 {
+    width: 95%;
+    height: 30%;
+    position: relative;
+    left: 2.5%;
+  }
+  .row4 {
+    width: 90%;
+    height: 35%;
+  }
+  .row5 {
+    width: 90%;
+    height: 15%;
+    * {
+      color: white;
+    }
+  }
+}
+.text {
+  margin: 10px 40px;
+  color: #5a5a5a;
+}
 </style>

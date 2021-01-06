@@ -15,7 +15,6 @@
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import SearchFilter from '@/components/SearchFilter.vue'
-import { mapGetters } from 'vuex'
 
 export default {
   name: 'Map',
@@ -46,10 +45,8 @@ export default {
     ).addTo(this.map)
   },
   methods: {
-    ...mapGetters(['getPlaceByName(er)', 'getPlace']),
     searchPlace(event) {
       this.searchPlaceName = event
-      console.log(this.searchPlaceName)
     },
     selectedZone(event) {
       this.map.flyTo([event.latitude, event.longitude], 11, {
@@ -58,17 +55,14 @@ export default {
       })
     },
     loadPlaces() {
-      console.log(
-        'GET PLACES: ' +
-          this.getPlaceByName(this.searchPlaceName) +
-          'NAMEPLACE: ' +
-          this.searchPlaceName
-      )
-      return this.getPlaceByName(this.searchPlaceName)
+      return this.$store.getters.getPlaceByName(this.searchPlaceName)
     },
     selectedPlace(event) {
-      console.log('SELECTED PLACE: ' + this.getPlace(event))
-      this.$emit('selected-place', this.getPlace(event))
+      var coordinate = {
+        latitude: event.latlng.lat,
+        longitude: event.latlng.lng
+      }
+      this.$emit('selected-place', this.$store.getters.getPlace(coordinate))
     }
   }
 }
@@ -80,6 +74,7 @@ export default {
   width: 100%
   position: relative
   align-items: baseline !important
+  border-radius: 17px
   & .search-container
     width: 40%
     z-index: 5
